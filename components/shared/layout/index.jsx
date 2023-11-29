@@ -154,10 +154,11 @@ const Layout = ({children,title=null})=>{
         return (
                 <div 
                     className={
-                        `absolute py-3 px-12 -z-10 left-[100%] top-0 border border-t-2
-                        border-t-rose-500 w-[600px]  ${subMenuOpen} font-normal h-full`
+                        `absolute py-3 px-12 left-[100%] top-0 border border-t-2
+                        border-t-rose-500 w-[600px]  ${subMenuOpen} font-normal h-full bg-white`
                     } 
-                    onMouseLeave={onMouseOut}
+                    onMouseLeave={onMouseOut} 
+                    style={{zIndex: 10000}}
                 >
                     {
                         subMenuData && subMenuData.map((subMenuItem,subMenuIndex)=>{
@@ -298,41 +299,41 @@ const Layout = ({children,title=null})=>{
                             }
                             if(menuItem.isDropdown)
                             {
-                                // return (
-                                //     <div className="relative" key={menuIndex}>
-                                //         <a 
-                                //             className=" text-sm font-bold flex gap-x-2 items-center cursor-pointer select-none" 
-                                //             onClick={onDropdownClick}
-                                //         >
-                                //             {menuItem.label} 
-                                //             <DownOutlined style={{fontSize: 10}}  />
-                                //         </a>
-                                //         <div 
-                                //             className={`border flex flex-col gap-y-3 absolute top-8 
-                                //             w-40 px-2 py-3 border-t-2 border-t-red-500 animate__animated animate__slideInTop
-                                //             ${dropdownOpen}`
-                                //             }
-                                //         >
-                                //             {
-                                //                 menuItem.dropdown.map((dropdownItem,dropdownIndex)=>{
-                                //                     return (
-                                //                         <Link href={dropdownItem.href} legacyBehavior key={dropdownIndex} >
-                                //                             <a className="text-sm text-gray-500">
-                                //                                 {dropdownItem.label}
-                                //                             </a>
-                                //                         </Link>
-                                //                     )
-                                //                 })
-                                //             }
-                                //         </div>
-                                //     </div>
-                                // )
+                                return (
+                                    <div className="relative" key={menuIndex}>
+                                        <a 
+                                            className=" text-sm font-bold flex gap-x-2 items-center cursor-pointer select-none" 
+                                            onClick={onDropdownClick}
+                                        >
+                                            {menuItem.label} 
+                                            <DownOutlined style={{fontSize: 10}}  />
+                                        </a>
+                                        <div 
+                                            className={`border flex flex-col gap-y-3 absolute top-8 
+                                            w-40 px-2 py-3 border-t-2 border-t-red-500 animate__animated animate__slideInTop
+                                            ${dropdownOpen}`
+                                            }
+                                        >
+                                            {
+                                                menuItem.dropdown.map((dropdownItem,dropdownIndex)=>{
+                                                    return (
+                                                        <Link href={dropdownItem.href} legacyBehavior key={dropdownIndex} >
+                                                            <a className="text-sm text-gray-500">
+                                                                {dropdownItem.label}
+                                                            </a>
+                                                        </Link>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                    </div>
+                                )
                             }
-                            // return (
-                            //     <Link href={menuItem.href} legacyBehavior key={menuIndex}>
-                            //         <a className=" text-sm font-bold">{menuItem.label}</a>
-                            //     </Link>
-                            // )
+                            return (
+                                <Link href={menuItem.href} legacyBehavior key={menuIndex}>
+                                    <a className=" text-sm font-bold">{menuItem.label}</a>
+                                </Link>
+                            )
                         })
                     }
                 </div>
