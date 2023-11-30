@@ -1,6 +1,6 @@
 import Head from "next/head"
 import Image from "next/image";
-import {Fade,FadeIn} from "../effect/fade" 
+import {Fade} from "../effect/fade" 
 import menu from "@/json/menu.json"
 import { 
     Badge,
@@ -155,10 +155,9 @@ const Layout = ({children,title=null})=>{
                 <div 
                     className={
                         `absolute py-3 px-12 left-[100%] top-0 border border-t-2
-                        border-t-rose-500 w-[600px]  ${subMenuOpen} font-normal h-full bg-white`
+                        border-t-rose-500 w-[600px]  ${subMenuOpen} font-normal h-full bg-white -z-[1]`
                     } 
                     onMouseLeave={onMouseOut} 
-                    style={{zIndex: 10000}}
                 >
                     {
                         subMenuData && subMenuData.map((subMenuItem,subMenuIndex)=>{
@@ -178,7 +177,7 @@ const Layout = ({children,title=null})=>{
     }
     const DropdownMenu = ({dropdownMenu})=>{
         return (
-            <Fade show={show}>
+            <Fade state={show}>
             <div className="flex flex-col absolute top-14 border left-0 bg-gray-50 w-full px-3">
                 <div className="relative">
                 {
@@ -282,7 +281,7 @@ const Layout = ({children,title=null})=>{
                             {
                                 return (
                                     <div 
-                                        className="relative" 
+                                        className="relative z-10" 
                                         key={menuIndex}
                                     >
                                         <a 
