@@ -155,8 +155,8 @@ const Layout = ({children,title=null})=>{
                 <div 
                     className={
                         `absolute py-3 px-12 left-[100%] top-0 border border-t-2
-                        border-t-rose-500 w-[600px]  ${subMenuOpen} font-normal h-full bg-white -z-[1]`
-                    } 
+                        border-t-rose-500 w-[600px]  ${subMenuOpen} font-normal h-full bg-white -z-[1]   
+                    `} 
                     onMouseLeave={onMouseOut} 
                 >
                     {
@@ -337,7 +337,7 @@ const Layout = ({children,title=null})=>{
                     }
                 </div>
             </header>
-            <section className="px-[3.6%]">
+            <section>
                 {
                     children
                 }

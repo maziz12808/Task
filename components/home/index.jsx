@@ -1,9 +1,13 @@
 import Layout from "../shared/layout";
-
+import Advertisement from "../home/advertisement"
+import EShop from "./e-shop";
+import MensaProducts from "./mensa-products";
 const Home = ()=>{
     return (
         <Layout title="Home">
-            <h1>home page</h1>
+            <Advertisement />
+            <EShop />
+            <MensaProducts />
         </Layout>
     )
 }
