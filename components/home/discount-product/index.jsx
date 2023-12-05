@@ -139,8 +139,7 @@ const MensaProducts = ()=>{
     }
     return (
         <div className="px-[3.6%] py-[7%] text-center">
-            <h1 className="text-3xl">E-Shop - By Seller's Name</h1>
-            <p className="my-3 mb-7 text-gray-500">Vocal for Local / Branded / MNC all products</p>
+            <h1 className="text-3xl mb-5">Special Discount Offer Zone</h1>
             <div className="grid grid-cols-4 gap-y-7">
                 {
                     eShopProducts.map((eShopProductItem,eShopProductIndex)=>(
@@ -154,7 +153,7 @@ const MensaProducts = ()=>{
                                 setCardAddToCart("block animate__animated animate__slideInUp")
                             }} 
                             onMouseOut={onHideAddToCart}
-                            className="p-3 shadow-lg relative" 
+                            className="p-3 shadow-lg relative cursor-auto" 
                             key={eShopProductIndex}
                             cover={
                                 <div className="w-[220px] h-[230px]">
@@ -169,6 +168,13 @@ const MensaProducts = ()=>{
                                 </div>
                             }
                         >
+                            <span className={
+                                `border bg-red-600 p-3 rounded-full text-white text-xs font-bold
+                                absolute top-3.5 right-3.5
+                                `}
+                            >
+                                3%
+                            </span>
                             <Meta 
                                 title={<span className=" text-blue-400">{eShopProductItem.title}</span>} 
                                 description={<span className="text-red-500 font-bold text-lg">{eShopProductItem.price}</span>} 

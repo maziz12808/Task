@@ -20,5 +20,64 @@ body {
  display: none;
 }
 
+.ant-tabs-ink-bar {
+  display: none;
+}
+.ant-tabs-tab.ant-tabs-tab :hover {
+  color: black;
+}
+.ant-tabs-tab.ant-tabs-tab-active :hover{
+  color: white;
+}
+.ant-tabs-tab.ant-tabs-tab-active span  {
+  background: red;
+  color: white;
+  padding: 6px 20px;
+  border-radius: 9999px;
+  border: 2px solid black;
+}
+.customer-box {
+  background-image: url("/Images/testimonial.jpg");
+}
+
+.swiper-customer {
+  width: 80%;
+  height: 350px;
+  background: white;
+}
+
+.swiper-slide-customer {
+  font-size: 18px;
+  color: black;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 40px 60px;
+}
+
+.parallax-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 130%;
+  height: 100%;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.swiper-slide-customer .title {
+  font-weight: 300;
+}
 
 
+
+.swiper-slide-customer .text {
+  font-size: 14px;
+  line-height: 1.3;
+}
+.swiper-button-prev::after {
+  color: grey;
+}
+.swiper-button-next::after {
+  color: grey;
+}

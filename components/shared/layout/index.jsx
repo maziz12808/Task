@@ -308,9 +308,9 @@ const Layout = ({children,title=null})=>{
                                             <DownOutlined style={{fontSize: 10}}  />
                                         </a>
                                         <div 
-                                            className={`border flex flex-col gap-y-3 absolute top-8 
+                                            className={`bg-white border flex flex-col gap-y-3 absolute top-8 
                                             w-40 px-2 py-3 border-t-2 border-t-red-500 animate__animated animate__slideInTop
-                                            ${dropdownOpen}`
+                                            ${dropdownOpen} z-40`
                                             }
                                         >
                                             {
@@ -337,7 +337,7 @@ const Layout = ({children,title=null})=>{
                     }
                 </div>
             </header>
-            <section>
+            <section className="bg-[#FFFFFF]">
                 {
                     children
                 }
