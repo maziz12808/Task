@@ -18,4 +18,3 @@ export const Fade = ({children,state=false,className=null})=>{
     );
     return design;
   }
-
