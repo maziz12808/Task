@@ -1,6 +1,6 @@
 import Head from "next/head"
 import Image from "next/image";
-import {Fade} from "../effect/fade" 
+import { Fade } from "../effect" 
 import menu from "@/json/menu.json"
 import { 
     Badge,
