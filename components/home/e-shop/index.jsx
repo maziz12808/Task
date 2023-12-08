@@ -4,38 +4,47 @@ import Link from "next/link"
 const EShop = ()=>{
     const companiesBrands = [
         {
+            label: "test-sub-category",
             image: "/Images/Avence_3p_set.jpg",
             href: "/e-shop"
         },
         {
+            label: "ma-provision-mart",
             image: "/Images/20210611_192511.png",
             href: "/e-shop"
         },
         {
+            label: "natures-basket",
             image: "/Images/natures-basket.jpg",
             href: "/e-shop"
         },
         {
+            label: "fresh-mart",
             image: "/Images/fresh-mart.jpeg",
             href: "/e-shop"
         },
         {
+            label: "mansa",
             image: "/Images/IMG-20210114-WA0003.jpg",
             href: "/e-shop"
         },
         {
+            label: "pragathi-international",
             image: "/Images/Screenshot_20210718-190529_Google1.jpg",
             href: "/e-shop"
         },
         {
+            label: "master-industries",
             image: "/Images/Screenshot_20230622_190559_Chrome1.jpg",
             href: "/e-shop"
         },
         {
+            label: "jay-ganesh-agarbatti-company",
             image: "/Images/21.jpg",
             href: "/e-shop"
         },
         {
+            label: "aagam-incense",
             image: "/Images/Aagam_Images.jpg",
             href: "/e-shop"
         }
@@ -43,27 +52,33 @@ const EShop = ()=>{
     ]
     const eShopBySallerName = [
         {
-            image: "/Images/Avence_3p_set.jpg",
+            label: "nilgiris",
+            image: "/Images/nilgiris.jpg",
             href: "/e-shop"
         },
         {
-            image: "/Images/20210611_192511.png",
+            label: "aaditya-mart",
+            image: "/Images/aaditya-mart.jpg",
             href: "/e-shop"
         },
         {
-            image: "/Images/natures-basket.jpg",
+            label: "rajlaxmi-enterprises",
+            image: "/Images/IMG-20171129-WA0020.jpg",
             href: "/e-shop"
         },
         {
-            image: "/Images/fresh-mart.jpeg",
+            label: "m-s-trading",
+            image: "/Images/IMG-20210528-WA00012.jpg",
             href: "/e-shop"
         },
         {
-            image: "/Images/IMG-20210114-WA0003.jpg",
+            label: "a-k-enterprises",
+            image: "/Images/IMG-20211229-WA0011.jpg",
             href: "/e-shop"
         },
         {
-            image: "/Images/Screenshot_20210718-190529_Google1.jpg",
+            label: "rle-mansa-",
+            image: "/Images/Mix_Products_MEM.jpg",
             href: "/e-shop"
         }
     ]
@@ -75,7 +90,7 @@ const EShop = ()=>{
                     {
                         companiesBrands.map((companiesBrandItem,companiesBrandIndex)=>(
                             <div className="shadow-xl rounded-2xl w-[90px] h-[90px]" key={companiesBrandIndex}>
-                                <Link href="/">
+                                <Link href={`/e-shop/${companiesBrandItem.label}`}>
                                 <Image 
                                     src={companiesBrandItem.image} 
                                     width={0} 
@@ -97,7 +112,7 @@ const EShop = ()=>{
                     {
                         eShopBySallerName.map((eShopBySallerNameItem,eShopBySallerNameIndex)=>(
                             <div className="shadow-xl rounded-2xl w-[90px] h-[90px]" key={eShopBySallerNameIndex}>
-                                <Link href="/">
+                                <Link href={`/e-shop/${eShopBySallerNameItem.label}`}>
                                 <Image 
                                     src={eShopBySallerNameItem.image} 
                                     width={0} 

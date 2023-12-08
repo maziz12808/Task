@@ -1,9 +1,10 @@
-import { CarOutlined, HeartFilled } from "@ant-design/icons";
-import Image from "next/image";
 import { useState } from "react";
-
+import Image from "next/image";
+import Link from "next/link"
+import { CarOutlined, HeartFilled } from "@ant-design/icons";
 const { Card, Button } = require("antd")
 const { Meta } = Card;
+
 const MensaProducts = ()=>{
     const [cardAddToCart,setCardAddToCart] = useState("hidden")
     const [cardIndex,setCardIndex] = useState(-1)
@@ -176,7 +177,13 @@ const MensaProducts = ()=>{
                                 3%
                             </span>
                             <Meta 
-                                title={<span className=" text-blue-400">{eShopProductItem.title}</span>} 
+                                title={
+                                    <span className=" text-blue-400">
+                                        <Link href={`/product/${eShopProductItem.title.split(" ").join("-")}`}>
+                                            {eShopProductItem.title}
+                                        </Link>
+                                    </span>
+                                }  
                                 description={<span className="text-red-500 font-bold text-lg">{eShopProductItem.price}</span>} 
                             /> 
                             {
