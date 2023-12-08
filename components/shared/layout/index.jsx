@@ -228,7 +228,7 @@ const Layout = ({children,title=null})=>{
                     </div>
                     <div>
                         <select
-                            className="rounded-full border px-3 py-1 focus:outline-none"
+                            className="rounded-full border px-4 py-2 focus:outline-none text-[13px]"
                         >
                             {
                                 lenguages.map((languageItem,languadeIndex)=>(
