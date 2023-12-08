@@ -342,8 +342,8 @@ const Layout = ({children,title=null})=>{
                     children
                 }
             </section>
-            <footer className="border px-[3.6%] py-[3%]">
-                <div className="grid grid-cols-4">
+            <footer className="border-t">
+                <div className="grid grid-cols-4 px-[3.6%] my-[5%]">
                     <div className="flex flex-col gap-y-3">
                         <h1 className="text-sm font-bold">Find It Fast</h1>
                         {
@@ -374,10 +374,30 @@ const Layout = ({children,title=null})=>{
                             Bangalore - 560053.
                         </address>
                         <div className="flex gap-x-5">
-                            <i className='bx bxl-facebook opacity-60 hover:opacity-100' style={{fontSize: 25}} />
-                            <i className='bx bxl-linkedin  opacity-60 hover:opacity-100' style={{fontSize: 25}} />
-                            <TwitterOutlined className=" opacity-60 hover:opacity-100" style={{fontSize: 25}} />
-                            <InstagramOutlined className=" opacity-60 hover:opacity-100" style={{fontSize: 25}} />
+                            <Link href="https://www.facebook.com/profile.php?id=100066817545855" target="_blank">
+                                <i 
+                                    className='bx bxl-facebook opacity-60 hover:opacity-100' 
+                                    style={{fontSize: 25}} 
+                                />
+                            </Link>
+                            <Link href="https://www.linkedin.com/in/mansa-easy-mart-16596a1b6/" target="_blank">
+                                <i 
+                                    className='bx bxl-linkedin  opacity-60 hover:opacity-100' 
+                                    style={{fontSize: 25}} 
+                                />
+                            </Link>
+                            <Link href="https://twitter.com/EasyMansa" target="_blank">
+                                <TwitterOutlined 
+                                    className=" opacity-60 hover:opacity-100" 
+                                    style={{fontSize: 25}} 
+                                />
+                            </Link>
+                            <Link href="https://www.instagram.com/mansaeasymart/?hl=en" target="_blank">
+                                <InstagramOutlined 
+                                    className=" opacity-60 hover:opacity-100" 
+                                    style={{fontSize: 25}} 
+                                />
+                            </Link>
                         </div>
                     </div>
                     <div className="flex flex-col gap-y-3">
@@ -392,6 +412,11 @@ const Layout = ({children,title=null})=>{
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className="px-[3.6%] py-4 bg-[#1D1C2A] w-full">
+                    <h1 className="text-white opacity-90 text-sm">
+                        Copyright © 2023 Mansa All Rights Reserved.
+                    </h1>
                 </div>
             </footer>
         </div>
