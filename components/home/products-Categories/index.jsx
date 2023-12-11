@@ -4,6 +4,7 @@ import { useState } from "react";
 
 const { Card, Button,Tabs,Empty } = require("antd")
 const { Meta } = Card;
+
 const MensaProducts = ()=>{
     const [cardAddToCart,setCardAddToCart] = useState("hidden")
     const [cardIndex,setCardIndex] = useState(-1)
@@ -365,6 +366,7 @@ const MensaProducts = ()=>{
                 tabBarGutter={50} 
                 animated
                 items={tabItems} 
+                id="category" 
             />
         </div>
     )

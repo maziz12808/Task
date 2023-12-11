@@ -145,9 +145,9 @@ const MansaServices = ()=>{
                     speed={600}
                     parallax={true}
                     navigation={true}
-                    
                     modules={[Parallax, Navigation]}
-                    className=" shadow-xl rounded-xl swiper-customer"
+                    className=" shadow-xl rounded-xl" 
+                    id="swiper-customer"
                 >
                     <div
                     slot="container-start"

@@ -20,33 +20,52 @@ body {
  display: none;
 }
 
-.ant-tabs-ink-bar {
+#category .ant-tabs-ink-bar {
   display: none;
 }
-.ant-tabs-tab.ant-tabs-tab :hover {
+#category .ant-tabs-tab.ant-tabs-tab :hover {
   color: black;
 }
-.ant-tabs-tab.ant-tabs-tab-active :hover{
+#category .ant-tabs-tab.ant-tabs-tab-active :hover{
   color: white;
 }
-.ant-tabs-tab.ant-tabs-tab-active span  {
+#category .ant-tabs-tab.ant-tabs-tab-active span  {
   background: red;
   color: white;
   padding: 6px 20px;
   border-radius: 9999px;
   border: 2px solid black;
 }
+/* product description and review ant design tabs-----start   */
+
+#product-desc-review .ant-tabs-tab.ant-tabs-tab-active :hover{
+  color: grey;
+}
+#product-desc-review .ant-tabs-tab.ant-tabs-tab-active span  {
+  color: black;
+  padding: 0 10px;
+}
+#product-desc-review .ant-tabs-ink-bar {
+  background-color: orangered;
+}
+#product-desc-review .ant-tabs-tab.ant-tabs-tab :hover {
+  color: black;
+}
+/* product description and review ant design tabs-----end   */
+
+
 .customer-box {
   background-image: url("/Images/testimonial.jpg");
 }
 
-.swiper-customer {
+/*--------------------Our Customer Slider Start---------------------------------------*/
+#swiper-customer {
   width: 80%;
   height: 350px;
   background: white;
 }
 
-.swiper-slide-customer {
+#swiper-customer .swiper-slide-customer {
   font-size: 18px;
   color: black;
   -webkit-box-sizing: border-box;
@@ -54,7 +73,7 @@ body {
   padding: 40px 60px;
 }
 
-.parallax-bg {
+#swiper-customer .parallax-bg {
   position: absolute;
   left: 0;
   top: 0;
@@ -65,24 +84,31 @@ body {
   background-position: center;
 }
 
-.swiper-slide-customer .title {
+#swiper-customer .swiper-slide-customer .title {
   font-weight: 300;
 }
 
 
 
-.swiper-slide-customer .text {
+#swiper-customer .swiper-slide-customer .text {
   font-size: 14px;
   line-height: 1.3;
 }
 
-.swiper-button-prev::after {
-  color: black;
-}
-.swiper-button-next::after {
+
+#swiper-customer .swiper-button-prev::after {
+  font-size: 25px;
+  font-weight:bolder;
   color: grey;
 }
+#swiper-customer .swiper-button-next::after {
+  font-size: 25px;
+  font-weight:bolder;
+  color: grey;
+}
+/*--------------------------Our Customer Slider End-----------------------------------*/
 
+/* ---------------------------------- */
 #product.swiper {
   width: 450px;
   height: 300px;
@@ -93,3 +119,56 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.swiper-slide {
+  background-size: cover;
+  background-position: center;
+}
+.mySwiper2 {
+  margin-bottom: 5px;
+  height: 450px;
+  width: 100%;
+}
+.mySwiper {
+  height: 200px;
+  box-sizing: border-box;
+}
+.mySwiper img {
+  width: 70px;
+  height: 100px;
+  box-sizing: border-box;
+  padding: 1px 0;
+}
+/* .mySwiper .swiper-slide {
+  width: 25%;
+  height: 70%;
+} */
+.mySwiper .swiper-slide-thumb-active img {
+  border-bottom: 2px solid red;
+}
+
+/* Related Product swiper */
+
+#related-product  {
+  width: 100%;
+  height: 100%; 
+  margin: 20px auto;
+}
+
+/*-------companies slider------------*/
+
+#related-companies {
+  width: 100%;
+}
+
+#related-companies .swiper-button-next::after {
+  font-size: 25px;
+  font-weight:bolder;
+  color: grey;
+}
+#related-companies .swiper-button-prev::after {
+  font-size: 25px;
+  font-weight:bolder;
+  color: grey;
+}
+

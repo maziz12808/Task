@@ -22,7 +22,8 @@ export default function App() {
         spaceBetween={30}
         
         navigation={true}
-        modules={[Navigation]}
+        modules={[Navigation]} 
+        id="related-companies"
       >
         <SwiperSlide>
           <Image 

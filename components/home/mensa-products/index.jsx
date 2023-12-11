@@ -133,7 +133,7 @@ const MensaProducts = ()=>{
 
     // Functions
     const onHideAddToCart = ()=>{
-        setCardAddToCart(" animate__animated animate__fadeOutDown") 
+        setCardAddToCart("animate__animated animate__fadeOutDown") 
         setTimeout(()=> {
             if(cardAddToCart == "block") return setCardAddToCart("hidden")
         },500)

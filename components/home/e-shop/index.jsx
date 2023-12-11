@@ -91,15 +91,15 @@ const EShop = ()=>{
                         companiesBrands.map((companiesBrandItem,companiesBrandIndex)=>(
                             <div className="shadow-xl rounded-2xl w-[90px] h-[90px]" key={companiesBrandIndex}>
                                 <Link href={`/e-shop/${companiesBrandItem.label}`}>
-                                <Image 
-                                    src={companiesBrandItem.image} 
-                                    width={0} 
-                                    height={0} 
-                                    sizes="100vw" 
-                                    style={{width: "100%",height: "100%"}} 
-                                    className="rounded-2xl" 
-                                    alt={`companies-brand-image${companiesBrandIndex}`}
-                                />
+                                    <Image 
+                                        src={companiesBrandItem.image} 
+                                        width={0} 
+                                        height={0} 
+                                        sizes="100vw" 
+                                        style={{width: "100%",height: "100%"}} 
+                                        className="rounded-2xl" 
+                                        alt={`companies-brand-image${companiesBrandIndex}`}
+                                    />
                                 </Link>
                             </div>
                         ))
