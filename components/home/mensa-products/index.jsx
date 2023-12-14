@@ -142,13 +142,13 @@ const MensaProducts = ()=>{
         <div className="px-[3.6%] py-[7%] text-center">
             <h1 className="text-3xl">E-Shop - By Seller's Name</h1>
             <p className="my-3 mb-7 text-gray-500">Vocal for Local / Branded / MNC all products</p>
-            <div className="grid grid-cols-4 gap-y-7">
+            <div className="grid grid-cols-4 gap-y-7 gap-x-7">
                 {
                     eShopProducts.map((eShopProductItem,eShopProductIndex)=>(
                         <Card 
                             hoverable
                             style={{
-                            width: 260,
+                            width: 270,
                             }} 
                             onMouseOver={()=> {
                                 setCardIndex(eShopProductIndex) 
@@ -158,7 +158,7 @@ const MensaProducts = ()=>{
                             className="p-3 shadow-lg relative" 
                             key={eShopProductIndex}
                             cover={
-                                <div className="w-[220px] h-[230px]">
+                                <div className="w-full h-[230px]">
                                     <Image 
                                         src={eShopProductItem.image} 
                                         width={0}
@@ -171,6 +171,7 @@ const MensaProducts = ()=>{
                             }
                         >
                             <Meta 
+                                className=""
                                 title={
                                     <span className=" text-blue-400">
                                         <Link href={`/product/${eShopProductItem.title.split(" ").join("-")}`}>
@@ -184,10 +185,10 @@ const MensaProducts = ()=>{
                                 cardIndex == eShopProductIndex ? 
                                 <div 
                                 className={`
-                                    border w-full absolute -bottom-1 -left-[2px] bg-black ${cardAddToCart} p-4 
+                                    border w-full absolute -bottom-1 -left-[2px] bg-black ${cardAddToCart} px-4 py-3
                                     flex justify-between items-center
                                 `} 
-                                style={{width: 262}}
+                                style={{width: "102%"}}
                                 >
                                     <Button 
                                         size="large" 
