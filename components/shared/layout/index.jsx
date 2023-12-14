@@ -14,7 +14,8 @@ import {
     RightOutlined,
     DownOutlined,
     TwitterOutlined,
-    InstagramOutlined
+    InstagramOutlined,
+    SearchOutlined
 } from '@ant-design/icons';
 import Link from "next/link";
 import { useState } from "react";
@@ -130,14 +131,17 @@ const Layout = ({children,title=null})=>{
         setSubMenuOpen("block")
         setSubMenuData(item.subMenu2);
     }
-    const onMouseOut = ()=>{
-        setSubMenuOpen("hidden")
-    }
     const onOpenMenu = ()=>{
         setSubMenuOpen("hidden")
         setSubMenuData([])
         setShow(!show)
         
+    }
+    const dropdown = ()=>{
+        if(dropdownOpen == "block") return setDropdownOpen("hidden") 
+        if(subMenuOpen == "block") setSubMenuOpen("hidden") 
+        if(show) return setShow(!show) 
+        if(openCart) return setOpenCart(!openCart) 
     }
     const onDropdownClick = ()=>{
         if(dropdownOpen === "hidden")
@@ -157,7 +161,6 @@ const Layout = ({children,title=null})=>{
                         `absolute py-3 px-12 left-[100%] top-0 border border-t-2
                         border-t-rose-500 w-[600px]  ${subMenuOpen} font-normal h-full bg-white -z-[1]`
                     } 
-                    onMouseLeave={onMouseOut} 
                 >
                     {
                         subMenuData && subMenuData.map((subMenuItem,subMenuIndex)=>{
@@ -203,8 +206,9 @@ const Layout = ({children,title=null})=>{
             </Fade>
         )
     }
+    
     return (
-        <div>
+        <div onClick={dropdown}>
             <Head>
                 <title>{title && title}</title>
             </Head>
@@ -219,12 +223,13 @@ const Layout = ({children,title=null})=>{
                     <Link href="/">
                         <Image src='/Images/mansa-logo-v10.png' width={270} height={85} alt="mansa-logo-v10" />
                     </Link>
-                    <div className="w-5/12">
+                    <div className="w-5/12 relative">
                         <input 
                             type="search"
                             placeholder="Search for products"
-                            className="bg-zinc-100 rounded-e-3xl rounded-s-3xl h-12 pl-3 w-full focus:outline-none" 
+                            className="bg-[#F4F6F5] rounded-e-3xl rounded-s-3xl h-12 pl-3 w-full focus:outline-none" 
                         />
+                        <SearchOutlined className=" absolute right-3 top-4 select-none" />
                     </div>
                     <div>
                         <select
@@ -308,16 +313,16 @@ const Layout = ({children,title=null})=>{
                                             <DownOutlined style={{fontSize: 10}}  />
                                         </a>
                                         <div 
-                                            className={`border flex flex-col gap-y-3 absolute top-8 
-                                            w-40 px-2 py-3 border-t-2 border-t-red-500 animate__animated animate__slideInTop
-                                            ${dropdownOpen}`
+                                            className={`border py-1 flex flex-col absolute top-8
+                                            w-44 border-t-2 border-t-red-500 animate__animated animate__slideInTop
+                                            ${dropdownOpen} bg-white z-50`
                                             }
                                         >
                                             {
                                                 menuItem.dropdown.map((dropdownItem,dropdownIndex)=>{
                                                     return (
-                                                        <Link href={dropdownItem.href} legacyBehavior key={dropdownIndex} >
-                                                            <a className="text-sm text-gray-500">
+                                                        <Link href={"/e-shop"+dropdownItem.href} legacyBehavior key={dropdownIndex} >
+                                                            <a className="text-sm text-gray-500 hover:bg-gray-100  px-3 py-2">
                                                                 {dropdownItem.label}
                                                             </a>
                                                         </Link>
@@ -337,7 +342,7 @@ const Layout = ({children,title=null})=>{
                     }
                 </div>
             </header>
-            <section className="px-[3.6%]">
+            <section>
                 {
                     children
                 }
