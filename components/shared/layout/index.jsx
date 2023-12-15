@@ -157,8 +157,8 @@ const Layout = ({children,title=null})=>{
                 <div 
                     className={
                         `absolute py-3 px-12 left-[100%] top-0 border border-t-2
-                        border-t-rose-500 w-[600px]  ${subMenuOpen} font-normal h-full bg-white -z-[1]`
-                    } 
+                        border-t-rose-500 w-[600px]  ${subMenuOpen} font-normal h-full bg-white -z-[1]   
+                    `} 
                     onMouseLeave={onMouseOut} 
                 >
                     {
@@ -336,9 +336,9 @@ const Layout = ({children,title=null})=>{
                                             <DownOutlined style={{fontSize: 10}}  />
                                         </a>
                                         <div 
-                                            className={`border flex flex-col gap-y-3 absolute top-8 
+                                            className={`bg-white border flex flex-col gap-y-3 absolute top-8 
                                             w-40 px-2 py-3 border-t-2 border-t-red-500 animate__animated animate__slideInTop
-                                            ${dropdownOpen}`
+                                            ${dropdownOpen} z-40`
                                             }
                                         >
                                             {
@@ -365,7 +365,7 @@ const Layout = ({children,title=null})=>{
                     }
                 </div>
             </header>
-            <section className="px-[3.6%]">
+            <section className="bg-[#FFFFFF]">
                 {
                     children
                 }
