@@ -1,15 +1,33 @@
 import Layout from "../shared/layout";
+import { usePathname } from 'next/navigation';
+import Link from "next/link";
 import {
     Form,
     Input,
-    Button
+    Button,
+    Breadcrumb
 } from "antd"
+import {RightOutlined} from "@ant-design/icons";
 const { Item } = Form;
 const { TextArea } = Input;
 
 const ContactUs = ()=>{
+    const pathname = usePathname()
+    const breadcrumbItem = ()=>{
+        const items = pathname.split("/").slice(0,2).map((item,index)=>(
+            index == 0 ? 
+            {title: <Link href="/">Home</Link>} : 
+            {title: item}
+        ))
+        return items
+    }
     return (
         <Layout>
+            <Breadcrumb 
+                className=" capitalize border-b px-[3.6%] py-4"
+                items={breadcrumbItem()}
+                separator={<RightOutlined style={{fontSize: '11px'}} />}
+            />
             <div  className="px-[3.6%] py-5">
                 <div className="grid grid-cols-4">
                     <div className="col-span-3 p-2">
