@@ -365,7 +365,7 @@ const Layout = ({children,title=null})=>{
                     }
                 </div>
             </header>
-            <section className="px-[3.6%] h-[1000px]">
+            <section className="px-[3.6%]">
                 {
                     children
                 }
