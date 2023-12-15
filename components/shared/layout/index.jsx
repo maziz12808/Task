@@ -269,7 +269,12 @@ const Layout = ({children,title=null})=>{
                             }
                         </select>
                         <a href="https://translate.google.com" target="_blank" className="flex flex-col relative">
-                            <Image src="/Images/google_icon.png" width={35} height={10} alt="google_icon" />
+                            <Image 
+                                src="/Images/google_icon.png" 
+                                width={35} 
+                                height={10} 
+                                alt="google_icon" 
+                            />
                             <span className="absolute top-6 text-sm font-semibold">Translate</span>
                         </a>
                     </div>
