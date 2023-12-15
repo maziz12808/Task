@@ -1,5 +1,6 @@
 import Head from "next/head"
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import {Fade} from "../effect" 
 import menu from "@/json/menu.json"
 import { 
@@ -18,7 +19,6 @@ import {
     UpOutlined
 } from '@ant-design/icons';
 import Link from "next/link";
-import { useState } from "react";
 
 const Layout = ({children,title=null})=>{
     // Const
@@ -205,7 +205,9 @@ const Layout = ({children,title=null})=>{
             </Fade>
         )
     }
-    window.onscroll = ()=> {scrollFunction()};
+    useEffect(()=>{
+        window.onscroll = ()=> {scrollFunction()};
+    },[])
 
     const scrollFunction= ()=> {
         if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) 
