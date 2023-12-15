@@ -1,7 +1,26 @@
-import Layout from "../shared/layout"
+import Layout from "../shared/layout";
+import Link from "next/link";
+import { usePathname } from 'next/navigation';
+import { RightOutlined } from "@ant-design/icons";
+import { Breadcrumb } from "antd";
+
 const AboutUs = ()=>{
+    const pathname = usePathname()
+    const breadcrumbItem = ()=>{
+        const items = pathname.split("/").slice(0,2).map((item,index)=>(
+            index == 0 ? 
+            {title: <Link href="/">Home</Link>} : 
+            {title: item}
+        ))
+        return items
+    }
     return (
         <Layout>
+            <Breadcrumb 
+                className=" capitalize border-b px-[3.6%] py-4"
+                items={breadcrumbItem()}
+                separator={<RightOutlined style={{fontSize: '11px'}} />}
+            />
             <div className="px-[3.6%] py-5">
                 <div className="flex flex-col gap-y-6 leading-6">
                     <p className="text-[14.7px] text-gray-500">
