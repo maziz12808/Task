@@ -14,7 +14,8 @@ import {
     RightOutlined,
     DownOutlined,
     TwitterOutlined,
-    InstagramOutlined
+    InstagramOutlined,
+    UpOutlined
 } from '@ant-design/icons';
 import Link from "next/link";
 import { useState } from "react";
@@ -25,6 +26,7 @@ const Layout = ({children,title=null})=>{
     const [openCart, setOpenCart] = useState(false)
     const [subMenuOpen, setSubMenuOpen] = useState("hidden")
     const [dropdownOpen, setDropdownOpen] = useState("hidden")
+    const [scrollBtn, setScrollBtn] = useState("hidden")
     const [subMenuData, setSubMenuData] = useState([])
 
     const lenguages = [
@@ -203,8 +205,34 @@ const Layout = ({children,title=null})=>{
             </Fade>
         )
     }
+    window.onscroll = ()=> {scrollFunction()};
+
+    const scrollFunction= ()=> {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) 
+        return setScrollBtn("block")
+        
+        setScrollBtn("hidden")
+    }
+    const scrollUp = ()=>{
+        document.documentElement.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }
     return (
-        <div>
+        <div className="relative">
+            <Button 
+                type="text" 
+                size="large" 
+                onClick={scrollUp}
+                className={`opacity-40 hover:opacity-100 fixed z-50 bottom-5 right-5 ${scrollBtn}`}
+                style={{
+                    borderRadius: 5,
+                    backgroundColor: "red",
+                    color: "white"
+                }}
+                icon={<UpOutlined style={{fontSize: 22}} />} 
+            />
             <Head>
                 <title>{title && title}</title>
             </Head>
@@ -337,7 +365,7 @@ const Layout = ({children,title=null})=>{
                     }
                 </div>
             </header>
-            <section className="px-[3.6%]">
+            <section className="px-[3.6%] h-[1000px]">
                 {
                     children
                 }
