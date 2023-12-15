@@ -1,18 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import Layout from "../shared/layout"
-import {
-    Card
-} from "antd";
 import { usePathname } from 'next/navigation'
-import { SearchOutlined } from "@ant-design/icons";
+import {
+    Card,
+    Breadcrumb
+} from "antd";
+import { 
+    SearchOutlined,
+    RightOutlined
+} from "@ant-design/icons";
 
 const { Meta } = Card;
 
 const EShop = ()=>{
     const pathname = usePathname()
-    console.log(pathname.split("/")[2].split("-").slice(3).join(" "));
     const eShopProducts = [
         {
             title: "Nilgiris",
@@ -48,10 +50,24 @@ const EShop = ()=>{
             price: "₹180"
         }
     ]
-    
+    const breadcrumbItem = ()=>{
+        const items = pathname.split("/").slice(0,2).map((item,index)=>(
+            index == 0 ? 
+            {title: <Link href="/">Home</Link>} : 
+            {title: item}
+        ))
+        return items
+    }
     return (
         <Layout>
-            <div  className="px-[3.6%] py-[2%] bg-[#FFFFFF] flex flex-col gap-y-8">
+            <Breadcrumb 
+                className=" capitalize border-b px-[3.6%] py-4"
+                items={breadcrumbItem()}
+                separator={<RightOutlined style={{fontSize: '11px'}} />}
+            />
+            <div  className="px-[3.6%] py-[2%] bg-[#FEFEFE] flex flex-col gap-y-8">
+            {/* {`home pathname.split("/")[2].split("-")`} */}
+           
                 <h1 className="bg-white px-3 py-3 text-3xl font-normal shadow border border-gray-50 capitalize">
                     E-Shop - By {pathname.split("/")[2].split("-").slice(3).join(" ")}
                 </h1>
