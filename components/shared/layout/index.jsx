@@ -264,7 +264,7 @@ const Layout = ({children,title=null})=>{
                             placeholder="Search for products"
                             className="bg-[#F4F6F5] rounded-e-3xl rounded-s-3xl h-12 pl-3 w-full focus:outline-none" 
                         />
-                        <SearchOutlined className=" absolute right-3 top-4 select-none" />
+                        <i className='bx bx-search absolute top-4 right-5 text-xl text-zinc-500' />
                     </div>
                     <div>
                         <select
