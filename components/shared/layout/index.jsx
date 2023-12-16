@@ -16,8 +16,7 @@ import {
     DownOutlined,
     TwitterOutlined,
     InstagramOutlined,
-    UpOutlined,
-    SearchOutlined
+    UpOutlined
 } from '@ant-design/icons';
 import Link from "next/link";
 
