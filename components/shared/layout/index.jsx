@@ -210,7 +210,7 @@ const Layout = ({children,title=null})=>{
         )
     }
     useEffect(()=>{
-        window.onscroll = ()=> {scrollFunction()};
+        window.onscroll = ()=> scrollFunction();
     },[])
 
     const scrollFunction= ()=> {
@@ -286,8 +286,8 @@ const Layout = ({children,title=null})=>{
                         </Badge>
                         
                         <Button 
-                            className="rounded-e-3xl rounded-s-3xl px-4 
-                            py-4 flex items-center border-red-600 border-2 text-base text-gray-600" 
+                            className="rounded-full px-4 py-4 flex items-center text-lg" 
+                            style={{color: "#2A528C",border: "2px solid #f72307"}}
                             icon={<UserOutlined className="-mr-1" />} 
                         >
                             <Link href="/login">Login</Link>
