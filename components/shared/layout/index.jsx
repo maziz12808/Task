@@ -133,6 +133,9 @@ const Layout = ({children,title=null})=>{
         setSubMenuOpen("block")
         setSubMenuData(item.subMenu2);
     }
+    const onMouseOut = ()=>{
+        setSubMenuOpen("hidden")
+    }
     const onOpenMenu = ()=>{
         setSubMenuOpen("hidden")
         setSubMenuData([])
@@ -228,7 +231,19 @@ const Layout = ({children,title=null})=>{
     
     
     return (
-        <div onClick={dropdown}>
+        <div onClick={dropdown} className="relative">
+            <Button 
+                type="text" 
+                size="large" 
+                onClick={scrollUp}
+                className={`opacity-40 hover:opacity-100 fixed z-50 bottom-5 right-5 ${scrollBtn}`}
+                style={{
+                    borderRadius: 5,
+                    backgroundColor: "red",
+                    color: "white"
+                }}
+                icon={<UpOutlined style={{fontSize: 22}} />} 
+            />
             <Head>
                 <title>{title && title}</title>
             </Head>
