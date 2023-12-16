@@ -14,7 +14,8 @@ import {
     RightOutlined,
     DownOutlined,
     TwitterOutlined,
-    InstagramOutlined
+    InstagramOutlined,
+    SearchOutlined
 } from '@ant-design/icons';
 import Link from "next/link";
 import { useState } from "react";
@@ -219,12 +220,13 @@ const Layout = ({children,title=null})=>{
                     <Link href="/">
                         <Image src='/Images/mansa-logo-v10.png' width={270} height={85} alt="mansa-logo-v10" />
                     </Link>
-                    <div className="w-5/12">
+                    <div className="w-5/12 relative">
                         <input 
                             type="search"
                             placeholder="Search for products"
                             className="bg-zinc-100 rounded-e-3xl rounded-s-3xl h-12 pl-3 w-full focus:outline-none" 
                         />
+                        <i className='bx bx-search absolute top-4 right-5 text-xl text-zinc-500' />
                     </div>
                     <div>
                         <select
