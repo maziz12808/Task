@@ -81,3 +81,19 @@ body {
 .swiper-button-next::after {
   color: grey;
 }
+
+.ant-layout-sider-dark, .ant-layout-sider-children {
+  background-color: #F8F6F2 !important;
+}
+.ant-menu  {
+  background-color: #F8F6F2 !important;
+}
+.ant-menu-item {
+  color: black !important;
+}
+/* .ant-menu-item-active {
+  background-color: #4FC9DA !important;
+} */
+.ant-menu-item-selected {
+  background-color: #4FC9DA !important;
+}
