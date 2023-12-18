@@ -138,7 +138,7 @@ const Layout = ({children,title=null})=>{
         for(let sub of item.childrenCategory)
         {
             count++;
-            if(count == 1)  subMenu.push({label: sub,category})
+            if(count == 1)  subMenu.push({category})
             subMenu.push({label: sub})
         }
         //setSubCatHeading(category)
