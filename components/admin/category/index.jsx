@@ -1,22 +1,41 @@
-import { useState,useRef } from "react"
+import { useState,useRef, useEffect } from "react"
 import LayoutEl from "../shared/layout"
+import useSWR, {mutate} from "swr"
+import axios from "axios";
+import Table from "../shared/table"
+axios.defaults.baseURL = "http://localhost:8080"
 import { 
     Button,
     Drawer, 
     Form,
     Input,
     Select,
-    Divider,
-    Space
+    message
 } from "antd"
-import {PlusOutlined } from "@ant-design/icons"
+import {EditOutlined,DeleteOutlined  } from "@ant-design/icons"
 
 const { Item } = Form;
+
+const fetcher = async (url)=>{
+    try {
+        const {data} = await axios.get(url)
+        return data
+    }
+    catch(err)
+    {
+       return err
+    }
+}
+
 const Category = ()=>{
     const [openDrawer,setOpenDrawer] = useState(false);
     const [items, setItems] = useState([]);
     const [name, setName] = useState('');
     const inputRef = useRef(null);
+    const [messageApi, contextHolder] = message.useMessage();
+
+    // Fetch category
+        const {data,error,loading} = useSWR("/category",fetcher)
     const toolbar = [
         <Button 
             type="text" 
@@ -46,15 +65,104 @@ const Category = ()=>{
           inputRef.current?.focus();
         }, 0);
       };
-    const onCategory = (val)=>{
-        console.log(val);
+    const onSubCategory = async (val)=>{
+        // Add Category
+        try{
+            const data = await axios.put(`/category/${val._id}`,val)
+            messageApi.open({
+                type: 'success',
+                content: 'Sub Category Created',
+                duration: 3,
+              });
+            mutate("/category")
+        }
+        catch(err)
+        {
+            console.log(err);
+        }
     }
+    const onCategory = async (val)=>{
+        console.log(val);
+        //Add Category
+        try{
+            const data = await axios.post(`/category`,val)
+            mutate("/category")
+        }
+        catch(err)
+        {
+            console.log(err);
+        }
+    }
+    const handleChange = (value) => {
+        console.log(value);
+      };
+      const editDeleteDesign = (text,obj)=>{
+        return (
+            <div className="flex gap-2">
+                <Button className="border-0" onClick={()=> editProduct(obj)} icon={<EditOutlined />} />
+                <Button onClick={()=> deleteProduct(obj._id)} className="text-red-500 border-0" icon={<DeleteOutlined />} />
+            </div>
+        )
+    }
+    const SubCategory = (text,obj)=>{
+        console.log(obj._id);
+        const options = [];
+        for (let sub of obj.childrenCategory) {
+            options.push({
+                value: sub,
+                label: sub,
+            });
+        }
+        return (
+            <Select
+            size="small"
+            defaultValue="a1"
+            onChange={handleChange}
+            style={{
+              width: 200,
+            }}
+            options={options} 
+          />
+        )
+    }
+    const columns = [
+        {
+            title: 'category',
+            dataIndex: 'title',
+            key: 'title'
+        }, 
+        {
+            title: 'Sub Category',
+            dataIndex: 'childrenCategory',
+            key: 'childrenCategory',
+            render: SubCategory
+        },
+        {
+            title: 'Action',
+            dataIndex: 'action',
+            key: 'action',
+            render: editDeleteDesign
+        }
+    ];
     return (
         <LayoutEl toolbar={toolbar}>
-            <Drawer title="Basic Drawer" placement="right" onClose={onClose} open={true}>
+            
+            <Table column={columns} tableData={data} />
+            <Drawer title="Add Sub Category" placement="right" onClose={onClose} open={openDrawer}>
+                {contextHolder}
+                {/* add category */}
                 <Form onFinish={onCategory}>
+                    <Item name="title">
+                        <Input size="large" placeholder="Enter category name" />
+                    </Item>
+                    <Item>
+                        <Button htmlType="submit">Submit</Button>
+                    </Item>
+                </Form>
+                {/* add Sub Category */}
+                <Form onFinish={onSubCategory}>
                     <Item 
-                        name="catetitlegory" 
+                        name="_id" 
                         rules={
                             [
                                 {
@@ -67,37 +175,11 @@ const Category = ()=>{
                         <Select 
                             size="large"
                             placeholder="Select Category"
-                            dropdownRender={(menu) => (
-                                <>
-                                    <Divider
-                                        style={{
-                                        margin: '8px 0',
-                                        }}
-                                    />
-                                    <Space>
-                                        <Input
-                                            placeholder="Please enter category name"
-                                            ref={inputRef}
-                                            value={name}
-                                            onChange={onNameChange}
-                                            onKeyDown={(e) => e.stopPropagation()} 
-                                        />
-                                        <Button 
-                                            type="text" 
-                                            size="middle" 
-                                            icon={<PlusOutlined />} 
-                                            onClick={addItem} 
-                                        >
-                                            Add item
-                                        </Button>
-                                    </Space>
-                                    {menu}
-                                </>
-                            )}
-                            options={items.map((item) => {
+                            
+                            options={data && data.map((item,index) => {
                                 return {
-                                    label: item,
-                                    value: item,
+                                    label: item.title,
+                                    value: item._id
                                 }
                             })}
                         />

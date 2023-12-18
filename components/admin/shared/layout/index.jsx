@@ -1,8 +1,8 @@
-import { DashboardOutlined, MenuOutlined } from "@ant-design/icons"
-import { Button, Layout,Menu,ConfigProvider,theme } from "antd"
 import Head from "next/head"
 import Link from "next/link"
 import { useState } from "react"
+import { Button, Layout,Menu } from "antd"
+import { DashboardOutlined, MenuOutlined } from "@ant-design/icons"
 
 const {Sider,Content,Header} = Layout
 
