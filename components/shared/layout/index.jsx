@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import {Fade} from "../effect" 
 import menu from "@/json/menu.json"
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:8080"
 import { 
     Badge,
     Button,
@@ -28,7 +30,9 @@ const Layout = ({children,title=null})=>{
     const [dropdownOpen, setDropdownOpen] = useState("hidden")
     const [scrollBtn, setScrollBtn] = useState("hidden")
     const [subMenuData, setSubMenuData] = useState([])
-
+    const [category, setCategory] = useState([])
+    const [subCatHeading,setSubCatHeading] = useState("")
+    
     const lenguages = [
         {
             label: "Select Language",
@@ -128,9 +132,18 @@ const Layout = ({children,title=null})=>{
         }
     ]
     // Functions
-    const onMouseEnter = (item)=>{
+    const onMouseEnter = (item,category)=>{
+        let subMenu = [];
+        let count=0;
+        for(let sub of item.childrenCategory)
+        {
+            count++;
+            if(count == 1)  subMenu.push({label: sub,category})
+            subMenu.push({label: sub})
+        }
+        //setSubCatHeading(category)
         setSubMenuOpen("block")
-        setSubMenuData(item.subMenu2);
+        setSubMenuData(subMenu);
     }
     const onMouseOut = ()=>{
         setSubMenuOpen("hidden")
@@ -152,6 +165,17 @@ const Layout = ({children,title=null})=>{
     }
     useEffect(()=>{
         window.onscroll = ()=> {scrollFunction()};
+        return async ()=>{
+            try
+            {
+                const {data} = await axios.get("/category")
+                setCategory(data);
+            }
+            catch(err)
+            {
+                console.log(err);
+            }
+        }
     },[])
 
     const scrollFunction= ()=> {
@@ -167,12 +191,12 @@ const Layout = ({children,title=null})=>{
         })
     }
     const SubMenu = ({subMenu})=>{
-        if(subMenu.isSubMenu)
+        if(true)
         {
         return (
                 <div 
                     className={
-                        `absolute py-3 px-12 left-[100%] top-0 border border-t-2
+                        `absolute py-3 px-12 left-[100%] top-0 border border-t-2 min-h-screen
                         border-t-rose-500 w-[600px]  ${subMenuOpen} font-normal h-full bg-white -z-[1]`
                     } 
                     onMouseLeave={onMouseOut} 
@@ -180,8 +204,8 @@ const Layout = ({children,title=null})=>{
                     {
                         subMenuData && subMenuData.map((subMenuItem,subMenuIndex)=>{
                             return (
-                                <div className="flex flex-col gap-y-1 mt-3" key={subMenuIndex}>
-                                    <p className="font-semibold">{subMenuItem.catLabel}</p>
+                                <div className="flex flex-col mt-1" key={subMenuIndex}>
+                                    <p className="font-semibold mb-0.5">{subMenuItem.category}</p>
                                     <Link href="/" legacyBehavior>
                                         <a className="text-gray-500">{subMenuItem.label}</a>
                                     </Link>
@@ -196,7 +220,7 @@ const Layout = ({children,title=null})=>{
     const DropdownMenu = ({dropdownMenu})=>{
         return (
             <Fade state={show}>
-            <div className="flex flex-col absolute top-14 border left-0 bg-gray-50 w-full px-3">
+            <div className="flex flex-col absolute top-14 border left-0 bg-gray-50 w-full px-3 min-h-screen">
                 <div className="relative">
                 {
                     dropdownMenu.map((dropdownMenuItem,dropdownMenuIndex)=>{
@@ -205,13 +229,13 @@ const Layout = ({children,title=null})=>{
                                 <div 
                                     className="border-b flex items-center justify-between 
                                     px-1 py-2 hover:bg-gray-100 hover:font-semibold" 
-                                    onMouseEnter={()=> onMouseEnter(dropdownMenuItem)} 
+                                    onMouseEnter={()=> onMouseEnter(dropdownMenuItem,dropdownMenuItem.title)} 
                                     
                                 >
-                                    <a href="#" className="text-sm">{dropdownMenuItem.label}</a>
+                                    <a href="#" className="text-sm">{dropdownMenuItem.title}</a>
                                     <RightOutlined style={{fontSize:12}} />
                                 </div>
-                                <SubMenu subMenu={dropdownMenuItem} />
+                                <SubMenu subMenu={dropdownMenuItem.childrenCategory} />
                             </div>
                         )
                     })
@@ -323,7 +347,7 @@ const Layout = ({children,title=null})=>{
                                             <MenuOutlined style={{color: "white"}} />
                                             {menuItem.label}
                                         </a>
-                                        <DropdownMenu dropdownMenu={menuItem.dropdown} />
+                                        <DropdownMenu dropdownMenu={category} />
                                     </div>
                                 )
                             }
