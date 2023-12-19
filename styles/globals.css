@@ -97,3 +97,15 @@ body {
 .ant-menu-item-selected {
   background-color: #4FC9DA !important;
 }
+
+/* .ant-menu > .ant-menu-item:hover,
+.ant-menu > .ant-menu-submenu:hover,
+.ant-menu > .ant-menu-item-active,
+.ant-menu> .ant-menu-submenu-active,
+.ant-menu > .ant-menu-item-open,
+.ant-menu> .ant-menu-submenu-open,
+.ant-menu > .ant-menu-item-selected,
+.ant-menu > .ant-menu-submenu-selected {
+  background-color: #4FC9DA !important;
+  border-bottom: 2px solid #5a8388;
+} */

@@ -94,7 +94,7 @@ const Category = ()=>{
         }
     }
     const handleChange = (value) => {
-        console.log(value);
+        //console.log(value);
       };
       const editDeleteDesign = (text,obj)=>{
         return (
@@ -119,7 +119,7 @@ const Category = ()=>{
             defaultValue="a1"
             onChange={handleChange}
             style={{
-              width: 200,
+              width: "90%",
             }}
             options={options} 
           />

@@ -18,6 +18,11 @@ const LayoutEl = ({children,title=null,toolbar=null})=>{
             label: <Link href="/admin/category">Category</Link>,
             key: 'category',
             icon: <i className='bx bx-category' />,
+        },
+        {
+            label: <Link href="/admin/product">Products</Link>,
+            key: 'product',
+            icon: <i className='bx bx-category' />,
         }
     ]
     return (
@@ -31,7 +36,7 @@ const LayoutEl = ({children,title=null,toolbar=null})=>{
                 collapsible 
                 className="min-h-screen admin-sider" 
             >
-                <Menu items={menu}  />
+                <Menu items={menu} />
             </Sider>
             <Layout>
                 <Header className="bg-white flex justify-between items-center px-4">
