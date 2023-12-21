@@ -82,7 +82,6 @@ const Category = ()=>{
         }
     }
     const onCategory = async (val)=>{
-        console.log(val);
         //Add Category
         try{
             const data = await axios.post(`/category`,val)
@@ -175,7 +174,6 @@ const Category = ()=>{
                         <Select 
                             size="large"
                             placeholder="Select Category"
-                            
                             options={data && data.map((item,index) => {
                                 return {
                                     label: item.title,

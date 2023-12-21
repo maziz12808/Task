@@ -23,6 +23,11 @@ const LayoutEl = ({children,title=null,toolbar=null})=>{
             label: <Link href="/admin/product">Products</Link>,
             key: 'product',
             icon: <i className='bx bx-category' />,
+        },
+        {
+            label: <Link href="/admin/purchase">Purchase</Link>,
+            key: 'purchase',
+            icon: <i className='bx bx-category' />,
         }
     ]
     return (
